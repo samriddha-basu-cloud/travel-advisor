@@ -23,6 +23,7 @@ const Navbar = () => {
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
             <ul className="flex space-x-1 justify-center bg-red-600 bg-opacity-80 rounded-full p-2">
               <li><Link to="/" className="text-white px-6 py-3 rounded-full hover:bg-red-500 transition-all duration-300">Home</Link></li>
+              <li><Link to="/cabs" className="text-white px-6 py-3 rounded-full hover:bg-red-500 transition-all duration-300">Cabs</Link></li>
               <li><Link to="/blog" className="text-white px-6 py-3 rounded-full hover:bg-red-500 transition-all duration-300">Blog</Link></li>
               <li><Link to="/gallery" className="text-white px-6 py-3 rounded-full hover:bg-red-500 transition-all duration-300">Gallery</Link></li>
               <li><Link to="/contact" className="text-white px-6 py-3 rounded-full hover:bg-red-500 transition-all duration-300">Contact</Link></li>
@@ -108,6 +109,9 @@ const Navbar = () => {
         <div className="flex flex-col space-y-2 mt-8">
           <Link to="/" className="block px-4 py-2 text-white hover:bg-red-600 hover:bg-opacity-50 rounded-full transition-all duration-300" onClick={toggleSidebar}>
             Home
+          </Link>
+          <Link to="/cabs" className="block px-4 py-2 text-white hover:bg-red-600 hover:bg-opacity-50 rounded-full transition-all duration-300" onClick={toggleSidebar}>
+            Cabs
           </Link>
           <Link to="/blog" className="block px-4 py-2 text-white hover:bg-red-600 hover:bg-opacity-50 rounded-full transition-all duration-300" onClick={toggleSidebar}>
             Blog
