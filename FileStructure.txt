@@ -1,0 +1,26 @@
+src/
+├── assets/              # Static assets like images
+├── components/          # Reusable UI components
+│   ├── Navbar.js
+│   ├── Hero.js
+│   ├── PlaceCard.js
+│   ├── BlogCard.js
+│   ├── CabOptions.js
+├── context/             # For global state management, like user authentication
+│   └── AuthContext.js
+├── hooks/               # Custom hooks like using Firebase Auth, fetching data, etc.
+│   └── useAuth.js
+├── pages/               # Each page of your website
+│   ├── HomePage.js
+│   ├── ExplorePage.js
+│   ├── BlogPage.js
+│   ├── GalleryPage.js
+│   ├── CabPage.js
+│   └── ContactPage.js
+├── services/            # API or Firebase services
+│   └── firebase.js
+├── utils/               # Helper functions or utilities
+│   └── formatDate.js
+├── App.js               # Main app component
+├── index.js             # Entry point
+├── index.css            # Global styles
