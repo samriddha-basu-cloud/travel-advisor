@@ -43,7 +43,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-800 min-h-screen">
       <div className="relative">
         <Hero />
         
@@ -51,7 +51,7 @@ const HomePage = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <form 
             onSubmit={handleSubmit} 
-            className="bg-black bg-opacity-50 p-8 rounded-lg shadow-xl max-w-4xl mx-auto w-full"
+            className="bg-black bg-opacity-20 p-8 rounded-lg shadow-xl max-w-4xl mx-auto w-full"
           >
             <h2 className="text-3xl font-bold text-center text-white  mt-4 mb-8">Plan Your Dream Tour</h2>
 
