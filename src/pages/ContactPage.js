@@ -28,9 +28,9 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="mt-20 min-h-screen bg-gradient-to-b from-red-100 to-white p-4 sm:p-6 lg:p-8">
+    <div className="mt-20 min-h-screen bg-gradient-to-b from-blue-100 to-white p-4 sm:p-6 lg:p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-red-700 mb-8 sm:mb-12">Contact Us</h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-blue-700 mb-8 sm:mb-12">Contact Us</h1>
         
         <form 
           onSubmit={handleSubmit} 
@@ -48,7 +48,7 @@ const ContactPage = () => {
                 placeholder={`Enter your ${field === 'people' ? 'number of people' : field === 'days' ? 'number of days' : field}`}
                 value={formData[field]}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 transition duration-300"
+                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                 required
               />
             </div>
@@ -56,7 +56,7 @@ const ContactPage = () => {
 
           <button 
             type="submit" 
-            className="w-full bg-red-600 text-white py-3 rounded-full font-semibold hover:bg-red-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+            className="w-full bg-blue-600 text-white py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             Submit
           </button>

@@ -9,11 +9,11 @@ const CabOptions = ({ options }) => {
             <img src={option.image} alt={option.name} className="w-full h-32 sm:h-40 lg:h-48 object-cover rounded-md sm:rounded-lg" />
           </div>
           <div className="p-4 sm:p-6">
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-red-700 mb-1 sm:mb-2">{option.name}</h3>
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-blue-700 mb-1 sm:mb-2">{option.name}</h3>
             <p className="text-sm sm:text-base text-gray-600 mb-2 sm:mb-4">{option.description}</p>
             <div className="flex justify-between items-center">
-              <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-red-600">₹{option.price}</span>
-              <button className="bg-red-600 text-white text-sm sm:text-base px-4 sm:px-6 py-1 sm:py-2 rounded-full hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">₹{option.price}</span>
+              <button className="bg-blue-600 text-white text-sm sm:text-base px-4 sm:px-6 py-1 sm:py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                 Book Now
               </button>
             </div>

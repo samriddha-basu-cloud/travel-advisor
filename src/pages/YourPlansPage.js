@@ -48,7 +48,7 @@ const YourPlansPage = () => {
 
   // Error state
   if (error) {
-    return <div className="text-center text-red-500 mt-8">{error}</div>;
+    return <div className="text-center text-blue-500 mt-8">{error}</div>;
   }
 
   // No plans found
@@ -56,13 +56,13 @@ const YourPlansPage = () => {
     return (
       <div className="container mx-auto px-4 py-16 text-center mt-12">
         {/* H1 Header when no plans */}
-        <h1 className="text-4xl font-bold text-red-700 mb-8">No Plans Yet?</h1>
+        <h1 className="text-4xl font-bold text-blue-700 mb-8">No Plans Yet?</h1>
         <p className="text-white text-lg mb-4">Looks like you haven't made any plans yet!</p>
 
-        {/* Bouncing Red Button to redirect to Home */}
+        {/* Bouncing blue Button to blueirect to Home */}
         <button
           onClick={() => navigate('/')}
-          className="bg-red-600 text-white px-8 py-3 rounded-md hover:bg-red-700 transition duration-300 animate-bounce"
+          className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition duration-300 animate-bounce"
         >
           Enquire Now!
         </button>
@@ -83,13 +83,13 @@ const YourPlansPage = () => {
   // If plans exist, render the list of plans
   return (
     <div className="container mx-auto px-4 py-16 mt-12">
-      <h2 className="text-4xl font-extrabold text-center text-red-700 mb-12">Your Plans</h2>
+      <h2 className="text-4xl font-extrabold text-center text-blue-700 mb-12">Your Plans</h2>
 
       {/* Plan cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {plans.map(plan => (
           <div key={plan.id} className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-red-700 mb-2">{plan.name}</h3>
+            <h3 className="text-xl font-semibold text-blue-700 mb-2">{plan.name}</h3>
             <p><strong>Email:</strong> {plan.email}</p>
             <p><strong>No. of People:</strong> {plan.people}</p>
             <p><strong>Days:</strong> {plan.days}</p>

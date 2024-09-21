@@ -20,13 +20,13 @@ const GalleryPage = () => {
   return (
     <div className="mt-20 p-8 bg-gray-100 min-h-screen">
       {/* Page Title */}
-      <h1 className="text-4xl font-bold mb-8 text-center text-red-700">Photo Gallery</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center text-blue-700">Photo Gallery</h1>
 
       {/* Inline Style for Contiguous Hover Effect */}
       <style>{`
         .gallery-card:hover ~ .gallery-card .gallery-image,
         .gallery-card:hover .gallery-image {
-          transform: scale(1.05); /* Scale the hovered card */
+          transform: scale(1.05); /* Scale the hoveblue card */
         }
 
         .gallery-card:hover ~ .gallery-card,
@@ -39,7 +39,7 @@ const GalleryPage = () => {
         }
 
         .gallery-card:hover {
-          z-index: 10; /* Bring the hovered card to the front */
+          z-index: 10; /* Bring the hoveblue card to the front */
         }
       `}</style>
 

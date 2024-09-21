@@ -16,7 +16,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center items-center text-white">
         {/* <h1 className="text-5xl font-bold mb-4">Explore the Beauty of North Bengal</h1>
         <p className="text-xl mb-8">Discover breathtaking landscapes and unforgettable experiences</p>
-        <button className="bg-red-600 text-white px-8 py-3 rounded-md hover:bg-red-700 transition duration-300">
+        <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition duration-300">
           Plan Your Trip
         </button> */}
       </div>
@@ -25,7 +25,7 @@ const Hero = () => {
       {user && (
         <button
           onClick={() => navigate('/your-plans')}
-          className="absolute bottom-8 right-8 bg-red-600 text-white rounded-full p-4 flex items-center justify-center hover:bg-red-700 transition duration-300 animate-bounce cursor-pointer z-50"
+          className="absolute bottom-8 right-8 bg-blue-600 text-white rounded-full p-4 flex items-center justify-center hover:bg-blue-700 transition duration-300 animate-bounce cursor-pointer z-50"
           style={{ width: '120px', height: '50px' }}
         >
           <span>Your Plans</span> 
