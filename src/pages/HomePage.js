@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import PlaceCard from '../components/PlaceCard';
+import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import { db } from '../services/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 
@@ -18,6 +19,7 @@ const inputClasses = "w-full px-4 py-2 border border-gray-300 rounded-md focus:o
 const labelClasses = "text-sm font-medium text-white mb-1";
 
 const HomePage = () => {
+  const { user } = useAuth();  // Access the user from Firebase Auth
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,6 +28,17 @@ const HomePage = () => {
     budget: '',
   });
   const [showAlert, setShowAlert] = useState(false);
+
+  // Prefill the form when the user data is available
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        ...formData,
+        name: user.displayName || '',
+        email: user.email || '',
+      });
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,6 +76,7 @@ const HomePage = () => {
                   name="name" 
                   type="text" 
                   placeholder="Your full name" 
+                  value={formData.name}  // Prefill the name field
                   onChange={handleChange} 
                   className={inputClasses}
                   required
@@ -76,6 +90,7 @@ const HomePage = () => {
                   name="email" 
                   type="email" 
                   placeholder="Your email address" 
+                  value={formData.email}  // Prefill the email field
                   onChange={handleChange} 
                   className={inputClasses}
                   required
