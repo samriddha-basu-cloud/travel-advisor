@@ -4,6 +4,7 @@ src/
 │   ├── Navbar.js
 │   ├── Hero.js
 │   ├── PlaceCard.js
+│   ├── Footer.js
 │   ├── BlogCard.js
 │   ├── CabOptions.js
 ├── context/             # For global state management, like user authentication
