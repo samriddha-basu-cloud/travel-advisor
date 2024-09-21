@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { Facebook, InstagramIcon, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
                 <Facebook size={24} />
               </a>
               <a href="#" className="hover:text-red-300 transition-colors duration-300">
-                <Instagram size={24} />
+                <InstagramIcon size={24} />
               </a>
               <a href="#" className="hover:text-red-300 transition-colors duration-300">
                 <MessageCircle size={24} />

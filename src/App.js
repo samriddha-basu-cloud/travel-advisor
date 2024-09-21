@@ -19,7 +19,7 @@ function App() {
           <Navbar />
 
           {/* Main content area for all routes */}
-          <div className="flex-grow mt-20">
+          <div className="flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/blog" element={<BlogPage />} />

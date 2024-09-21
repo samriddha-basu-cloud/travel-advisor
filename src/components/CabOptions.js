@@ -5,7 +5,7 @@ const CabOptions = ({ options }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       {options.map((option, index) => (
         <div key={index} className="bg-transparent rounded-lg sm:rounded-xl shadow-md sm:shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl sm:hover:shadow-2xl hover:-translate-y-1">
-          <div className="p-8 sm:p-12 bg-red-200">
+          <div className="p-8 sm:p-12 bg-white">
             <img src={option.image} alt={option.name} className="w-full h-32 sm:h-40 lg:h-48 object-cover rounded-md sm:rounded-lg" />
           </div>
           <div className="p-4 sm:p-6">
