@@ -4,9 +4,14 @@ import PlaceCard from '../components/PlaceCard';
 import { db } from '../services/firebase';
 import { addDoc, collection } from 'firebase/firestore';
 
+import darjeeling from '../assets/images/darjeeling.webp';
+import kalimpong from '../assets/images/kalimpong.jpg';
+import sandakphu from '../assets/images/sandakphu.webp';
+
 const places = [
-  { name: 'Darjeeling', description: 'Beautiful hill station', image: '/images/darjeeling.jpg' },
-  { name: 'Kalimpong', description: 'Stunning landscape', image: '/images/kalimpong.jpg' },
+  { name: 'Darjeeling', description: 'Beautiful hill station', image: darjeeling },
+  { name: 'Kalimpong', description: 'Stunning landscape', image: kalimpong },
+  { name: 'Sandakphu', description: 'Good for trekking', image: sandakphu },
 ];
 
 const inputClasses = "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200 bg-white bg-opacity-80";
