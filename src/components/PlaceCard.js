@@ -10,8 +10,7 @@ const PlaceCard = ({ place }) => {
       <div className="px-6 py-4">
         <h2 className="font-bold text-2xl text-blue-700 mb-3">{place.name}</h2>
         <p className="text-gray-600 text-base mb-4">{place.description}</p>
-        <a
-          href="#"
+        <a href="#"
           className="inline-block text-blue-600 font-semibold hover:text-blue-700 transition duration-300"
         >
           Learn more

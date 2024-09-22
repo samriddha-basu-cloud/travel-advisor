@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
-import PlaceCard from '../components/PlaceCard';
+import ItineraryCard from '../components/ItineraryCard'; // Assuming this is in PlaceCard folder
 import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import { db } from '../services/firebase';
-import { addDoc, collection } from 'firebase/firestore';
-
-import darjeeling from '../assets/images/darjeeling.webp';
-import kalimpong from '../assets/images/kalimpong.jpg';
-import sandakphu from '../assets/images/sandakphu.webp';
-
-const places = [
-  { name: 'Darjeeling', description: 'Beautiful hill station', image: darjeeling },
-  { name: 'Kalimpong', description: 'Stunning landscape', image: kalimpong },
-  { name: 'Sandakphu', description: 'Good for trekking', image: sandakphu },
-];
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 
 const inputClasses = "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 bg-white bg-opacity-80";
 const labelClasses = "text-sm font-medium text-white mb-1";
@@ -22,12 +12,13 @@ const HomePage = () => {
   const { user } = useAuth();  // Access the user from Firebase Auth
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    phone: '',
     people: '',
     days: '',
-    budget: '',
+    notes: '',  // Add notes field
   });
   const [showAlert, setShowAlert] = useState(false);
+  const [places, setPlaces] = useState([]); // State for fetched itinerary data
 
   // Prefill the form when the user data is available
   useEffect(() => {
@@ -35,17 +26,43 @@ const HomePage = () => {
       setFormData({
         ...formData,
         name: user.displayName || '',
-        email: user.email || '',
       });
     }
   }, [user]);
 
+  // Fetch itinerary data from Firestore
+  useEffect(() => {
+    const fetchItineraryData = async () => {
+      try {
+        const itineraryCollection = collection(db, 'itinerary');
+        const itinerarySnapshot = await getDocs(itineraryCollection);
+        const itineraryData = itinerarySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setPlaces(itineraryData);
+      } catch (error) {
+        console.error("Error fetching itinerary data:", error);
+      }
+    };
+
+    fetchItineraryData();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formWithEmail = {
+      ...formData,
+      email: user.email,
+      createdAt: new Date().toISOString(),
+      status: 'pending',
+    };
+
     try {
-      await addDoc(collection(db, 'contactForms'), formData);
+      await addDoc(collection(db, 'contactForms'), formWithEmail);
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);  // Hide alert after 3 seconds
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -82,15 +99,15 @@ const HomePage = () => {
                   required
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="email" className={labelClasses}>Email</label>
+                <label htmlFor="phone" className={labelClasses}>Phone Number</label>
                 <input 
-                  id="email"
-                  name="email" 
-                  type="email" 
-                  placeholder="Your email address" 
-                  value={formData.email}  // Prefill the email field
+                  id="phone"
+                  name="phone" 
+                  type="tel" 
+                  placeholder="Your phone number" 
+                  value={formData.phone}
                   onChange={handleChange} 
                   className={inputClasses}
                   required
@@ -123,16 +140,15 @@ const HomePage = () => {
                 />
               </div>
 
-              <div className="md:col-span-2">
-                <label htmlFor="budget" className={labelClasses}>Budget</label>
-                <input 
-                  id="budget"
-                  name="budget" 
-                  type="number" 
-                  placeholder="Your estimated budget" 
+              <div className="col-span-1 md:col-span-2">
+                <label htmlFor="notes" className={labelClasses}>Notes</label>
+                <textarea 
+                  id="notes"
+                  name="notes" 
+                  placeholder="Leave a note regarding cabs and destinations" 
+                  value={formData.notes}
                   onChange={handleChange} 
-                  className={inputClasses}
-                  required
+                  className={`${inputClasses} h-28`}  // Adds height for textarea
                 />
               </div>
             </div>
@@ -147,9 +163,9 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Places Section */}
+      {/* Itinerary Section */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center text-white mb-12">Popular Destinations</h2>
+        <h2 className="text-3xl font-bold text-center text-white mb-12">Itinerary</h2>
 
         {/* Carousel for small screens */}
         <div className="md:hidden overflow-x-auto whitespace-nowrap py-4">
@@ -159,7 +175,12 @@ const HomePage = () => {
               className="inline-block px-4"
               style={{ minWidth: '280px', maxWidth: '300px' }}
             >
-              <PlaceCard place={place} />
+              <ItineraryCard 
+                id={place.id}  // Pass the id for navigation
+                name={place.title}  // Fix naming to "title" for consistency
+                description={place.description} 
+                images={place.images} 
+              />
             </div>
           ))}
         </div>
@@ -167,7 +188,13 @@ const HomePage = () => {
         {/* Grid layout for medium and larger screens */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {places.map((place, index) => (
-            <PlaceCard key={index} place={place} />
+            <ItineraryCard 
+              key={index}
+              id={place.id}  // Pass the id for navigation
+              name={place.title}  // Fix naming to "title" for consistency
+              description={place.description} 
+              images={place.images} 
+            />
           ))}
         </div>
       </section>
@@ -177,6 +204,7 @@ const HomePage = () => {
         <div className="fixed bottom-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md">
           <p className="font-bold">Success</p>
           <p>Your tour planning request has been submitted successfully!</p>
+          <p>You will be contacted shortly.</p>
         </div>
       )}
     </div>

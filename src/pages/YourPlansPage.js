@@ -90,10 +90,10 @@ const YourPlansPage = () => {
         {plans.map(plan => (
           <div key={plan.id} className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold text-blue-700 mb-2">{plan.name}</h3>
-            <p><strong>Email:</strong> {plan.email}</p>
+            <p><strong>Status:</strong> {plan.status}</p>
             <p><strong>No. of People:</strong> {plan.people}</p>
             <p><strong>Days:</strong> {plan.days}</p>
-            <p><strong>Budget:</strong> ₹{plan.budget}</p>
+            <p><strong>Note:</strong> {plan.notes}</p>
           </div>
         ))}
       </div>

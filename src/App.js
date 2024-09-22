@@ -11,6 +11,7 @@ import GalleryPage from './pages/GalleryPage';
 import CabPage from './pages/CabPage';
 import ContactPage from './pages/ContactPage';
 import YourPlansPage from './pages/YourPlansPage';
+import ItineraryPage from './pages/ItineraryPage';
 import { db } from '../src/services/firebase';  // Import Firestore instance
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/itinerary/:id" element={<ItineraryPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/cabs" element={<CabPage />} />
