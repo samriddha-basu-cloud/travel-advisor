@@ -1,8 +1,9 @@
+// ItineraryCard.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
-const ItineraryCard = ({ name, description, images, duration, location }) => {
+const ItineraryCard = ({ id, name, description, images }) => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -19,6 +20,12 @@ const ItineraryCard = ({ name, description, images, duration, location }) => {
 
     return () => clearInterval(interval);
   }, [images.length]);
+
+  const handleViewItinerary = () => {
+    navigate(`/itinerary/${id}`, {
+      state: { name, description, images },
+    });
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden max-w-sm mx-auto transition-all duration-300 hover:shadow-xl">
@@ -53,15 +60,9 @@ const ItineraryCard = ({ name, description, images, duration, location }) => {
         </div>
       </div>
       <div className="p-4">
-        {/* <div className="flex items-center text-gray-600 text-sm mb-2">
-          <Calendar size={16} className="mr-1" />
-          <span>{duration} days</span>
-        </div> */}
-        <p className="text-gray-700 mb-4">
-          {trimmedDescription}
-        </p>
+        <p className="text-gray-700 mb-4">{trimmedDescription}</p>
         <button 
-          onClick={() => navigate('/itinerary')}
+          onClick={handleViewItinerary}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg flex items-center justify-center transition-colors duration-300 hover:bg-blue-700"
         >
           View Itinerary
