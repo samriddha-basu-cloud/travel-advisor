@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineLogout } from 'react-icons/ai';
+import favicon from '../assets/images/favicon.png';
 
 const Navbar = () => {
   const { user, loginWithGooglePopup, logout, authError } = useAuth();
@@ -34,7 +35,8 @@ const Navbar = () => {
     <>
       <nav className="bg-blue-900 bg-opacity-0 p-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex justify-between items-center relative">
-          <h1 className="text-white text-lg font-bold bg-blue-700 px-3 py-1 rounded-full">My Travels Guru</h1>
+          {/* <h1 className="text-white text-lg font-bold bg-blue-700 px-3 py-1 rounded-full">My Travels Guru</h1> */}
+          <img src={favicon} alt="My Travels Guru" className="ml-4 h-28 w-28" /> 
 
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
             <ul className="flex space-x-1 justify-center bg-blue-600 bg-opacity-40 rounded-full p-2">
@@ -65,10 +67,10 @@ const Navbar = () => {
                     location.pathname === '/blog' ? 'bg-blue-700' : ''
                   }`}
                 >
-                  Blog
+                  Blogs
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/gallery"
                   className={`text-white font-bold px-6 py-3 rounded-full hover:bg-blue-600 transition-all duration-300 ${
@@ -87,7 +89,7 @@ const Navbar = () => {
                 >
                   Contact
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
